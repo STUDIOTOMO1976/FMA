@@ -3,7 +3,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
 <meta http-equiv="Pragma" content="no-cache"/>
 <meta http-equiv="Expires" content="0"/>
-<meta name="studiotomo-build" content="recipe_20261110_v132"/>
+<meta name="studiotomo-build" content="recipe_20261110_v133"/>
 <script id="fresh-open-guard">
 (function(){
   // Works only on hosted pages; offline file:// HTML is never redirected.
@@ -11,7 +11,7 @@
   // A session marker avoids repeated redirects even on slow mobile connections.
   if(!/^https?:$/.test(location.protocol)) return;
   try {
-    var u=new URL(location.href), key='fp_recipe_132_redirect';
+    var u=new URL(location.href), key='fp_recipe_133_redirect';
     var arrival=u.searchParams.get('_fresh');
     var pending=sessionStorage.getItem(key);
     if(arrival && pending===arrival){sessionStorage.removeItem(key);return;}
@@ -23,9 +23,9 @@
 })();
 </script>
 
-<title>ふーぴょんレシピ ～そろえてフードマッチパズル～｜STUDIOTOMO Ver.1.32</title>
+<title>ふーぴょんレシピ ～そろえてフードマッチパズル～｜STUDIOTOMO Ver.1.33</title>
 <meta name="description" content="ふーぴょんレシピ そろえてパズル。ふーぴょんと仲間たちの食育パズル。オフラインで遊べる全15ステージ。">
-<meta name="build-version" content="1.32-title-refresh-20261110">
+<meta name="build-version" content="1.33-mobile-game-layout-20261110">
 <style>
 :root{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",system-ui,sans-serif;color:#56392d;--ink:#4b3373;--blue:#277dd0;--shadow:0 12px 30px rgba(26,99,151,.13)}
 *{box-sizing:border-box}html,body{margin:0;min-height:100%;overscroll-behavior:none}body{background:radial-gradient(circle at 10% 2%,#ffffff85 0 12%,transparent 30%),repeating-linear-gradient(0deg,#b8eaff 0 39px,#afe4ff 39px 40px),repeating-linear-gradient(90deg,#ffffff22 0 39px,transparent 39px 40px);color:#47325a}button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}button:focus-visible{outline:4px solid #ff9b27;outline-offset:2px}button:disabled{cursor:not-allowed;opacity:.43}img{display:block;max-width:100%}.hide{display:none!important}
@@ -1424,7 +1424,7 @@ body[data-screen="recipes"] .main,body[data-screen="recipeDetail"] .main{max-wid
 @media print{html,body,body[data-screen="recipeDetail"]{height:auto!important;overflow:visible!important;background:white!important}#app{height:auto!important;display:block!important;overflow:visible!important}.fp-topbar,.fp-detail-breadcrumb,.fp-detail-actions,.fp-detail-tail button{display:none!important}body[data-screen="recipeDetail"] .main{display:block!important;height:auto!important;overflow:visible!important}.fp-detail-scroller{height:auto!important;overflow:visible!important}.fp-detail-container{max-width:none;padding:0}.fp-detail-hero{break-inside:avoid;background:#f4faf5!important;print-color-adjust:exact}.fp-detail-columns{gap:10px}.fp-detail-block{break-inside:avoid}.fp-detail-tips section{break-inside:avoid}.fp-detail-disclaimer{break-inside:avoid}}
 
 
-/* Ver.1.32 polished title/navigation/recipe illustration layer. Noto Sans is optional local system font. */
+/* Ver.1.33 polished title/navigation/recipe illustration layer. Noto Sans is optional local system font. */
 body[data-screen="recipes"] .main,body[data-screen="recipeDetail"] .main,
 body[data-screen="recipes"] .fp-topbar,body[data-screen="recipeDetail"] .fp-topbar{
  font-family:"Noto Sans JP","Noto Sans","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
@@ -1469,7 +1469,7 @@ body[data-screen="title"] .main{height:100dvh!important;max-height:100dvh;min-he
 .fp-title-hit{position:absolute;z-index:200;pointer-events:auto!important;display:block;cursor:pointer;border:0!important;outline:0!important;background:transparent;touch-action:manipulation;border-radius:999px;-webkit-tap-highlight-color:transparent;transition:box-shadow .16s ease,background-color .16s ease,filter .16s ease}
 .fp-title-hit:is(:hover,:focus,:focus-visible,:active){border:0!important;outline:0!important;box-shadow:0 0 17px 7px rgba(255,218,71,.72),0 0 36px 12px rgba(255,159,78,.31);background:rgba(255,242,181,.035)}
 .fp-title-hit:is(.fp-hit-land):is(:hover,:focus,:focus-visible,:active){box-shadow:0 0 15px 6px rgba(91,214,255,.79),0 0 34px 10px rgba(27,148,251,.42);background:rgba(198,243,255,.04)}
-/* Ver.1.32: user-supplied artwork button positions (desktop/landscape) */
+/* Ver.1.33: user-supplied artwork button positions (desktop/landscape) */
 .fp-hit-game{left:15.6%;top:72.6%;width:33.3%;height:18.3%}
 .fp-hit-recipes{left:50.5%;top:72.6%;width:33.2%;height:18.3%}
 .fp-hit-land{left:79.7%;top:2%;width:18.7%;height:9.7%}
@@ -1519,6 +1519,132 @@ body[data-screen="title"] .main{height:100dvh!important;max-height:100dvh;min-he
 @media print{
  body[data-screen="recipes"] .fp-topbar,body[data-screen="recipeDetail"] .fp-topbar{display:none!important}
  .fp-detail-scroller,.fp-recipe-scroller{overflow:visible!important;height:auto!important}
+}
+
+
+/* FU-PYON RECIPE 1.33: responsive game HUD — keep board and all actions inside the viewport.
+   No hidden required game controls. Scaled by the *actual* dynamic viewport on mobile Safari. */
+.fm-small-icon{display:block;width:18px;height:18px;flex:none}
+.game-toolicons .ui-iconbtn{gap:3px}
+.game-stage-label .fm-current-dish{min-width:0;line-height:1.25}
+.game-stage-label .fm-dish-name{overflow-wrap:anywhere}
+@media (max-width:700px) and (orientation:portrait){
+ body[data-screen="game"] .fp-topbar{height:48px!important;min-height:48px!important;flex-basis:48px!important;padding:2px 5px!important}
+ body[data-screen="game"] .fp-brand-wordmark{max-height:39px;object-fit:contain}
+ body[data-screen="game"] .fp-land-link{height:38px!important}
+ body[data-screen="game"] .fp-header-button{min-height:37px!important;padding:2px 3px!important}
+ body[data-screen="game"] .main{min-width:0;min-height:0;padding:3px 5px 4px!important;width:100%;max-width:100%;overflow:hidden!important}
+ body[data-screen="game"] .game-screen{width:100%;height:100%;min-width:0;min-height:0;display:grid;grid-template-rows:auto 40px minmax(0,1fr);gap:4px}
+ body[data-screen="game"] .game-screen .game-topline{display:grid!important;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:5px;min-height:44px;height:auto;margin:0!important;padding:3px 6px!important;border:2px solid #fff!important;border-radius:12px!important;box-shadow:none!important}
+ body[data-screen="game"] .game-stage-label{min-width:0;display:grid!important;grid-template-columns:max-content max-content minmax(0,1fr);grid-template-rows:auto auto;align-content:center;align-items:center;gap:1px 5px}
+ body[data-screen="game"] .game-stage-label strong{grid-column:1;grid-row:1;padding:1px 8px;font-size:11px;line-height:1.45;border-width:1px;box-shadow:none;white-space:nowrap}
+ body[data-screen="game"] .game-stage-label .fm-mode-label{grid-column:2;grid-row:1;min-width:0;padding:1px 6px;font-size:10px;line-height:1.35}
+ body[data-screen="game"] .game-stage-label .fm-current-dish{grid-column:1/-1;grid-row:2;font-size:clamp(10px,3vw,12px);line-height:1.25;color:#7c4d59;white-space:normal;overflow-wrap:anywhere}
+ body[data-screen="game"] .fm-menu-prefix{display:none}
+ body[data-screen="game"] .game-toolicons{display:flex;align-items:center;gap:4px;justify-content:flex-end;flex-wrap:nowrap}
+ body[data-screen="game"] .game-toolicons .ui-iconbtn{display:flex;align-items:center;justify-content:center;flex-direction:row;gap:3px;min-width:0;min-height:34px;height:34px;padding:3px 7px;font-size:11px;border:1px solid #d5e8eb;border-radius:10px;box-shadow:0 2px 0 #b8d5df;background:#f9fdff;color:#216a94;white-space:nowrap}
+ body[data-screen="game"] .game-toolicons .ui-iconbtn span{font-size:11px;line-height:1}
+ body[data-screen="game"] .game-toolicons .fm-small-icon{width:13px;height:13px}
+ body[data-screen="game"] .game-summary{width:100%;min-width:0;grid-template-columns:minmax(0,.94fr) minmax(0,1fr);min-height:0;height:40px;gap:5px;margin:0;padding:3px 6px;border:2px solid #fff;border-radius:12px;box-shadow:none}
+ body[data-screen="game"] .compact-score{min-width:0;display:grid;grid-template-columns:1fr 1fr;gap:4px}
+ body[data-screen="game"] .compact-score>div{padding:1px 3px;gap:2px;min-height:32px;flex-direction:row}
+ body[data-screen="game"] .compact-score small{font-size:clamp(8px,2.25vw,10px);line-height:1.15;white-space:normal;text-align:center}
+ body[data-screen="game"] .compact-score strong{font-size:clamp(14px,4vw,18px);line-height:1}
+ body[data-screen="game"] .boss-hud{min-width:0;display:flex;flex-direction:column;justify-content:center;align-items:stretch;gap:3px}
+ body[data-screen="game"] .boss-hud>span{min-width:0;max-width:100%;font-size:clamp(9px,2.5vw,11px);line-height:1.18;overflow-wrap:anywhere;white-space:normal}
+ body[data-screen="game"] .enemyhealth-large{height:9px;min-height:9px;flex:0 0 9px}
+ body[data-screen="game"] .game-layout.game-fit{display:grid!important;grid-template-columns:minmax(0,1fr)!important;grid-template-rows:clamp(51px,8.4dvh,66px) minmax(0,1fr) 77px!important;gap:4px!important;min-width:0;min-height:0;height:100%;width:100%;align-items:stretch}
+ body[data-screen="game"] .battle-column{width:100%;height:100%;min-width:0;min-height:0;display:flex;flex-direction:row;gap:0}
+ body[data-screen="game"] .game-fit .battle{width:100%;height:100%;min-height:0;display:flex;flex-direction:row;align-items:center;justify-content:space-around;padding:2px 5px;gap:3px;border:2px solid #fff;border-radius:12px;box-shadow:none}
+ body[data-screen="game"] .game-fit .fighter{min-width:0;flex:1 1 0;display:flex;flex-direction:row;gap:4px;align-items:center;justify-content:center}
+ body[data-screen="game"] .game-fit .fighter img,body[data-screen="game"] .game-fit .fighter img.boss-main-img{max-width:min(18vw,55px);width:auto;height:min(7dvh,56px);max-height:100%;min-height:0;flex:none;object-fit:contain!important}
+ body[data-screen="game"] .game-fit .fighter .id{font-size:clamp(9px,2.6vw,11px);max-width:none;min-width:0;line-height:1.13;overflow-wrap:anywhere;text-align:left}
+ body[data-screen="game"] .game-fit .vs{font-size:clamp(13px,3.6vw,17px);flex:0 0 auto}
+ body[data-screen="game"] .board-column{min-width:0;min-height:0;width:100%;height:100%;padding:3px;border:2px solid #fff;border-radius:12px;gap:3px;display:flex;flex-direction:column;justify-content:center;align-items:center;overflow:visible}
+ body[data-screen="game"] .board-column .board{flex:0 1 auto;min-height:0!important;width:min(calc(100% - 6px),calc(100dvh - 308px),440px)!important;max-width:100%;max-height:calc(100% - 26px)!important;aspect-ratio:1;height:auto;margin:0;border-width:3px;padding:3px;gap:2px;border-radius:12px;box-shadow:0 3px 0 #458a7e,0 5px 12px #6e8d7738}
+ body[data-screen="game"] .board-column .tile{min-width:0;min-height:0;padding:0;border-radius:6px}
+ body[data-screen="game"] .board-column .tile img{width:100%;height:100%;object-fit:contain}
+ body[data-screen="game"] .board-column .game-message{width:100%;flex:0 0 22px;min-height:22px;max-height:22px;margin:0;padding:2px 4px;font-size:clamp(9px,2.5vw,11px);line-height:1.13;border-width:1px;white-space:normal;overflow-wrap:anywhere}
+ body[data-screen="game"] .game-fit .rightgame{position:static;display:grid!important;grid-template-columns:minmax(0,43fr) minmax(0,57fr);grid-template-rows:minmax(0,1fr);align-items:stretch;gap:5px;height:77px;min-width:0;min-height:0}
+ body[data-screen="game"] .game-fit .rightgame .hudpanel{min-width:0;min-height:0;height:77px;margin:0;padding:4px;border:2px solid #fff;border-radius:12px;box-shadow:none;display:flex;flex-direction:column;gap:2px;justify-content:flex-start}
+ body[data-screen="game"] .rightgame .hudpanel:first-child{display:flex!important;flex-direction:column!important;gap:2px!important}
+ body[data-screen="game"] .game-fit .hudtitle,body[data-screen="game"] .rightgame .hudpanel:first-child .hudtitle{font-size:clamp(10px,2.8vw,12px);line-height:1.2;white-space:nowrap;letter-spacing:0;margin:0}
+ body[data-screen="game"] .game-fit .targets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3px;min-height:0;flex:1 1 auto;align-items:stretch}
+ body[data-screen="game"] .game-fit .target{min-width:0;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;padding:1px 2px;border:1px solid #efd9c8;border-radius:8px;font-size:10px;line-height:1.1}
+ body[data-screen="game"] .game-fit .target img{height:clamp(20px,4.5dvh,28px);width:clamp(20px,4.5dvh,28px);flex:none;object-fit:contain}
+ body[data-screen="game"] .game-fit .target>span:nth-child(2){display:none}
+ body[data-screen="game"] .game-fit .target .progress{font-size:clamp(10px,2.8vw,12px);white-space:nowrap;line-height:1.15}
+ body[data-screen="game"] .game-fit .ranger-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px;min-height:0;flex:1 1 auto}
+ body[data-screen="game"] .game-fit .rangerbtn{min-width:0;min-height:0;height:51px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:0;padding:1px;border:1px solid #d0e2e7;border-radius:8px;box-shadow:0 1px 0 #bdd7e0}
+ body[data-screen="game"] .game-fit .rangerbtn img{width:100%;max-width:42px;height:clamp(25px,4dvh,31px);object-fit:contain}
+ body[data-screen="game"] .game-fit .rangerbtn .rname{font-size:clamp(9px,2.4vw,10px);line-height:1}
+ body[data-screen="game"] .game-fit .rangerbtn .rdesc{display:none}
+ body[data-screen="game"] .game-fit .rangerbtn .gauge{width:88%;height:3px;min-height:3px;margin-top:2px}
+ body[data-screen="game"] .game-screen .combo-zone{position:absolute;z-index:8;top:24%;right:2%;width:min(35vw,145px);height:auto;max-height:none;min-height:0;opacity:0;pointer-events:none;transform:scale(.85);transition:opacity .15s,transform .15s}
+ body[data-screen="game"] .game-screen .combo-zone.active{opacity:1;transform:scale(1)}
+}
+@media(max-width:700px) and (orientation:portrait) and (max-height:690px){
+ body[data-screen="game"] .game-layout.game-fit{grid-template-rows:51px minmax(0,1fr) 73px!important}
+ body[data-screen="game"] .game-fit .rightgame,body[data-screen="game"] .game-fit .rightgame .hudpanel{height:73px}
+ body[data-screen="game"] .board-column .board{width:min(calc(100% - 6px),calc(100dvh - 298px),440px)!important}
+ body[data-screen="game"] .game-fit .rangerbtn{height:46px}
+ body[data-screen="game"] .game-fit .rangerbtn img{height:24px}
+}
+@media(max-width:700px) and (orientation:portrait) and (max-height:555px){
+ body[data-screen="game"] .fp-topbar{height:40px!important;min-height:40px!important;flex-basis:40px!important}
+ body[data-screen="game"] .game-layout.game-fit{grid-template-rows:44px minmax(0,1fr) 66px!important}
+ body[data-screen="game"] .game-fit .rightgame,body[data-screen="game"] .game-fit .rightgame .hudpanel{height:66px}
+ body[data-screen="game"] .game-fit .fighter img,body[data-screen="game"] .game-fit .fighter img.boss-main-img{height:39px}
+ body[data-screen="game"] .board-column .board{width:min(calc(100% - 6px),calc(100dvh - 279px),440px)!important}
+ body[data-screen="game"] .game-fit .rangerbtn{height:40px}
+ body[data-screen="game"] .game-fit .rangerbtn img{height:20px}
+}
+/* Tablets in portrait should spend their height on the board, not a tall combo placeholder. */
+@media(min-width:701px) and (max-width:920px) and (orientation:portrait){
+ body[data-screen="game"] .game-screen{grid-template-rows:auto auto minmax(0,1fr);gap:6px}
+ body[data-screen="game"] .game-layout.game-fit{grid-template-columns:minmax(0,1fr)!important;grid-template-rows:clamp(72px,9dvh,100px) minmax(0,1fr) 110px!important;gap:6px;min-height:0}
+ body[data-screen="game"] .game-fit .battle{min-height:0;height:100%}
+ body[data-screen="game"] .game-fit .fighter img,body[data-screen="game"] .game-fit .fighter img.boss-main-img{height:min(8dvh,84px)}
+ body[data-screen="game"] .board-column .board{width:min(calc(100% - 10px),calc(100dvh - 370px),730px)!important;max-height:calc(100% - 38px)!important}
+ body[data-screen="game"] .game-fit .rightgame{display:grid;grid-template-columns:1fr 1.15fr;grid-template-rows:110px;gap:8px;height:110px;min-height:0}
+ body[data-screen="game"] .game-fit .rightgame .hudpanel{min-height:0;height:110px;margin:0;overflow:hidden}
+ body[data-screen="game"] .game-fit .rightgame .hudpanel:first-child .hudtitle{white-space:normal}
+ body[data-screen="game"] .game-fit .targets{grid-template-columns:1fr 1fr;gap:5px}
+ body[data-screen="game"] .game-fit .target{padding:3px 5px;gap:3px;flex-direction:row}
+ body[data-screen="game"] .game-fit .target img{width:33px;height:33px}
+ body[data-screen="game"] .game-fit .target>span:nth-child(2){display:none}
+ body[data-screen="game"] .game-fit .ranger-row{gap:5px}
+ body[data-screen="game"] .game-fit .rangerbtn{min-height:68px}
+ body[data-screen="game"] .game-fit .rangerbtn img{height:35px}
+ body[data-screen="game"] .game-fit .rightgame .combo-zone{position:absolute;top:25%;right:4%;width:min(170px,25vw);height:auto;max-height:none;min-height:0;opacity:0;pointer-events:none;transform:scale(.85)}
+ body[data-screen="game"] .game-fit .rightgame .combo-zone.active{opacity:1;transform:scale(1)}
+}
+/* Short landscape iPhones: combo is overlay only, never a third panel that is clipped. */
+@media(max-height:540px) and (orientation:landscape){
+ body[data-screen="game"] .game-screen{grid-template-rows:auto auto minmax(0,1fr);gap:3px}
+ body[data-screen="game"] .game-screen .game-topline{min-height:0;margin:0!important;padding:2px 7px!important;border-width:2px!important;box-shadow:none!important}
+ body[data-screen="game"] .game-summary{min-height:30px;margin:0;padding:2px 6px;border-width:2px}
+ body[data-screen="game"] .game-layout.game-fit{min-height:0;height:100%;gap:5px}
+ body[data-screen="game"] .game-fit .rightgame{position:relative;overflow:visible;gap:4px;min-height:0}
+ body[data-screen="game"] .game-fit .rightgame .hudpanel{min-height:0;padding:3px 5px}
+ body[data-screen="game"] .game-fit .rightgame .combo-zone{position:absolute;top:20%;right:0;width:min(185px,100%);height:auto;max-height:none;min-height:0;opacity:0;pointer-events:none;transform:scale(.9);z-index:7}
+ body[data-screen="game"] .game-fit .rightgame .combo-zone.active{opacity:1;transform:scale(1)}
+ body[data-screen="game"] .game-fit .board{max-height:calc(100% - 23px)!important}
+}
+
+@media (max-width:700px) and (orientation:portrait){
+ body[data-screen="game"] .board-column{background:transparent;border-color:transparent;box-shadow:none}
+}
+@media(max-height:540px) and (orientation:landscape){
+ body[data-screen="game"] .game-toolicons .ui-iconbtn{min-height:32px;height:32px;padding:2px 7px}
+}
+
+@media(min-width:701px) and (max-width:920px) and (orientation:portrait){
+ /* The desktop sidebar recipe ticket has no room beside a horizontal battle row.
+    The recipe title remains visible in the ORDER strip. */
+ body[data-screen="game"] .battle-column .recipe-ticket{display:none!important}
+ body[data-screen="game"] .battle-column{display:block;min-width:0;overflow:visible}
+ body[data-screen="game"] .battle-column .battle{width:100%;height:100%}
 }
 
 </style></head><body><div id="app"></div><div id="overlay-root"></div><div id="toast-root"></div>
@@ -1823,7 +1949,7 @@ function renderRestaurantMenu(){
   </section>`;
 }
 function getGerm(key){return GERMS.find(x=>x.key===key)||GERMS[0]}
-function renderGame(){if(!run)return '';let s=run.stage,enemy=getGerm(s.enemy),finalBoss=s.n===15;let bossVisual=finalBoss?`<img id="boss-main-img" class="boss-main-img" src="${ASSETS[BOSS_VARIANTS[0]]}" alt="ノロヨ">`:img('germ_'+enemy.key,`class="boss-main-img" alt="${enemy.name}"`);let bossStrip=finalBoss?`<div class="noroyo-strip">${BOSS_VARIANTS.map((key,i)=>`<button type="button" class="noroyo-mini ${i===0?'active':''}" data-boss-view="${i}" aria-label="ノロヨ パターン ${i+1}">${img(key,`alt="ノロヨ パターン ${i+1}"`)}</button>`).join('')}</div>`:'';return `<section class="game-screen"><div class="game-topline"><div class="game-stage-label"><strong>ORDER ${String(s.n).padStart(2,'0')}</strong><small class="fm-mode-label fm-mode-${s.level}">${LEVEL_NAMES[s.level]||'初級'}</small><span>${run.bonus?'★ 特別注文':'本日のメニュー'}　${htmlSafe(activeMenuLabel())}</span></div><div class="game-toolicons"><button class="ui-iconbtn" data-action="pause" title="ゲームを止める">⏸<span>中断</span></button><button class="ui-iconbtn" data-action="retry" title="やり直す">🔄<span>やり直し</span></button></div></div><div class="game-summary"><div class="compact-score"><div><small>のこり手数</small><strong id="moves">${run.moves}</strong></div><div><small>スコア</small><strong id="score">${run.score}</strong></div></div><div class="boss-hud"><span>💜 ${enemy.name}${finalBoss?' 👑':''}</span><div class="enemyhealth enemyhealth-large"><span id="hpbar" style="width:${run.hp/run.maxHp*100}%"></span></div></div></div><div class="game-layout game-fit"><div class="battle-column"><div class="battle panel"><div class="fighter ally-fighter">${img('crew_'+save.selected,`alt="${CREW[save.selected][0]}"`)}<div class="id">${CREW[save.selected][0]}</div></div><div class="vs">VS</div><div class="fighter enemy-fighter ${finalBoss?'enemy-final':''}">${finalBoss?'<span class="boss-tag">FINAL BOSS</span>':''}${bossVisual}<div class="id">${enemy.name}</div></div></div>${bossStrip}<div class="recipe-ticket"><span class="ticket-caption">TODAY'S MENU</span><strong>${htmlSafe(activeMenuLabel())}</strong><p>${htmlSafe(activeMenuDescription())}</p>${activeDishArt()}<div class="dish-progress-label">材料あつめ <strong id="dish-percent">0%</strong></div><div class="dish-progress-track"><span id="dish-progress-bar" style="width:0%"></span></div></div></div><div class="board-column"><div id="board" class="board" role="group" aria-label="食材パズル　上下左右と斜めの8方向に入れ替えて、たて・よこ・ななめに3つ以上そろえよう"></div><div class="game-message" id="game-msg">${htmlSafe(run.message)}</div><div id="combo-board-fx" aria-hidden="true"></div></div><aside class="rightgame"><div class="panel hudpanel"><div class="hudtitle">🥕 あつめる食材</div><div class="targets" id="targets"></div></div><div class="panel hudpanel"><div class="hudtitle">⚡ おたすけレンジャー</div><div class="ranger-row" id="rangers"></div></div><div id="combo-zone" class="combo-zone combo-blue" aria-live="polite" aria-atomic="true"><div class="combo-caption">✨ CHAIN FEVER ✨</div><div class="combo-content"><div class="combo-flavor">マッチでパワーアップ</div><div class="combo-main"><strong>0</strong><span>連鎖</span></div><div class="combo-gain">+0 点</div></div><div id="combo-best" class="combo-best">BEST 0連鎖</div></div></aside></div></section>`}
+function renderGame(){if(!run)return '';let s=run.stage,enemy=getGerm(s.enemy),finalBoss=s.n===15;let bossVisual=finalBoss?`<img id="boss-main-img" class="boss-main-img" src="${ASSETS[BOSS_VARIANTS[0]]}" alt="ノロヨ">`:img('germ_'+enemy.key,`class="boss-main-img" alt="${enemy.name}"`);let bossStrip=finalBoss?`<div class="noroyo-strip">${BOSS_VARIANTS.map((key,i)=>`<button type="button" class="noroyo-mini ${i===0?'active':''}" data-boss-view="${i}" aria-label="ノロヨ パターン ${i+1}">${img(key,`alt="ノロヨ パターン ${i+1}"`)}</button>`).join('')}</div>`:'';return `<section class="game-screen"><div class="game-topline"><div class="game-stage-label"><strong>ORDER ${String(s.n).padStart(2,'0')}</strong><small class="fm-mode-label fm-mode-${s.level}">${LEVEL_NAMES[s.level]||'初級'}</small><span class="fm-current-dish"><span class="fm-menu-prefix">${run.bonus?'★ 特別注文':'本日のメニュー'}　</span><span class="fm-dish-name">${htmlSafe(activeMenuLabel())}</span></span></div><div class="game-toolicons"><button type="button" class="ui-iconbtn" data-action="pause" title="ゲームを中断する" aria-label="中断"><svg class="fm-small-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 5v14M15 5v14"/></svg><span>中断</span></button><button type="button" class="ui-iconbtn" data-action="retry" title="このステージを最初から遊ぶ" aria-label="やり直し"><svg class="fm-small-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7v5h-5M20 12A8 8 0 1 0 18 18"/></svg><span>やり直し</span></button></div></div><div class="game-summary"><div class="compact-score"><div><small>のこり手数</small><strong id="moves">${run.moves}</strong></div><div><small>スコア</small><strong id="score">${run.score}</strong></div></div><div class="boss-hud"><span>💜 ${enemy.name}${finalBoss?' 👑':''}</span><div class="enemyhealth enemyhealth-large"><span id="hpbar" style="width:${run.hp/run.maxHp*100}%"></span></div></div></div><div class="game-layout game-fit"><div class="battle-column"><div class="battle panel"><div class="fighter ally-fighter">${img('crew_'+save.selected,`alt="${CREW[save.selected][0]}"`)}<div class="id">${CREW[save.selected][0]}</div></div><div class="vs">VS</div><div class="fighter enemy-fighter ${finalBoss?'enemy-final':''}">${finalBoss?'<span class="boss-tag">FINAL BOSS</span>':''}${bossVisual}<div class="id">${enemy.name}</div></div></div>${bossStrip}<div class="recipe-ticket"><span class="ticket-caption">TODAY'S MENU</span><strong>${htmlSafe(activeMenuLabel())}</strong><p>${htmlSafe(activeMenuDescription())}</p>${activeDishArt()}<div class="dish-progress-label">材料あつめ <strong id="dish-percent">0%</strong></div><div class="dish-progress-track"><span id="dish-progress-bar" style="width:0%"></span></div></div></div><div class="board-column"><div id="board" class="board" role="group" aria-label="食材パズル　上下左右と斜めの8方向に入れ替えて、たて・よこ・ななめに3つ以上そろえよう"></div><div class="game-message" id="game-msg">${htmlSafe(run.message)}</div><div id="combo-board-fx" aria-hidden="true"></div></div><aside class="rightgame"><div class="panel hudpanel"><div class="hudtitle">🥕 あつめる食材</div><div class="targets" id="targets"></div></div><div class="panel hudpanel"><div class="hudtitle">⚡ おたすけレンジャー</div><div class="ranger-row" id="rangers"></div></div><div id="combo-zone" class="combo-zone combo-blue" aria-live="polite" aria-atomic="true"><div class="combo-caption">✨ CHAIN FEVER ✨</div><div class="combo-content"><div class="combo-flavor">マッチでパワーアップ</div><div class="combo-main"><strong>0</strong><span>連鎖</span></div><div class="combo-gain">+0 点</div></div><div id="combo-best" class="combo-best">BEST 0連鎖</div></div></aside></div></section>`}
 function renderBoard(){if(!run||scene!=='game')return;const el=document.querySelector('#board');if(!el)return;el.classList.toggle('busy',run.busy);el.innerHTML=run.board.map((v,i)=>`<button type="button" class="tile ${run.selected===i?'sel':''} ${run.contaminated.has(i)?'frozen':''}" data-pos="${i}" aria-label="${v==null?'空き':runFood(v).name}、${Math.floor(i/7)+1}行${i%7+1}列" tabindex="0">${v==null?'':img('food_'+runFood(v).key)}</button>`).join('')}
 function renderHUD(){if(!run||scene!=='game')return;let {stage:s}=run;let goals=[{idx:s.food1,goal:s.goal1},{idx:s.food2,goal:s.goal2}];let t=document.querySelector('#targets');if(t)t.innerHTML=goals.map(({idx,goal})=>`<div class="target ${run.collected[idx]>=goal?'done':''}">${img('food_'+runFood(idx).key)}<span>${runFood(idx).name}</span><span class="progress">${Math.min(run.collected[idx],goal)}/${goal}${run.collected[idx]>=goal?' ✔':''}</span></div>`).join('');let r=document.querySelector('#rangers');if(r)r.innerHTML=[['green','みどり','食材を消す'],['red','あか','攻撃する'],['yellow','きいろ','手数＋3']].map(([key,name,desc])=>`<button type="button" class="rangerbtn ${run.power[key]>=100?'ready':''}" data-power="${key}" ${run.power[key]<100||run.busy?'disabled':''}>${img('ranger_'+key)}<span class="rname">${name}</span><span class="rdesc">${desc}</span><span class="gauge"><span style="width:${run.power[key]}%"></span></span><span class="rdesc">${run.power[key]}%</span></button>`).join('');let moves=document.querySelector('#moves');if(moves)moves.textContent=run.moves;let score=document.querySelector('#score');if(score)score.textContent=run.score.toLocaleString();let hp=document.querySelector('#hpbar');if(hp)hp.style.width=`${Math.max(0,100*run.hp/run.maxHp)}%`;let m=document.querySelector('#game-msg');if(m)m.textContent=run.message;
 let percent=Math.min(100,Math.round((Math.min(1,run.collected[s.food1]/s.goal1)+Math.min(1,run.collected[s.food2]/s.goal2))/2*100));
@@ -2104,7 +2230,7 @@ function forceFreshVersion(){
   // Browser / CDN の古い文書キャッシュを避けるため、押下ごとに新しいURLで開く。
   persist();const url=new URL(location.href);
   const token=Date.now()+'_'+Math.random().toString(36).slice(2,10);
-  try{sessionStorage.setItem('fp_recipe_132_redirect',token)}catch(e){}
+  try{sessionStorage.setItem('fp_recipe_133_redirect',token)}catch(e){}
   url.searchParams.set('_fresh',token);
   location.replace(url.href);
 }
